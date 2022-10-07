@@ -1,0 +1,382 @@
+{
+  "info": {
+    "_postman_id": "b1a246d2-f508-40f7-9b64-211423489664",
+    "name": "NewYorkTimes_Gorban_HomeWork_Lesson_2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "20304265"
+  },
+  "item": [
+    {
+      "name": "Most Popular Articles",
+      "item": [
+        {
+          "name": "GetMostEmailedArticle",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "pm.test(\"Response time is less than 500ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.nytimes.com/svc/mostpopular/v2/emailed/{{period}}.json",
+              "protocol": "https",
+              "host": [
+                "api",
+                "nytimes",
+                "com"
+              ],
+              "path": [
+                "svc",
+                "mostpopular",
+                "v2",
+                "emailed",
+                "{{period}}.json"
+              ],
+              "query": [
+                {
+                  "key": "api-key",
+                  "value": "rz5zWihitVCP57mCjVTa02Yu7V5ZnBU9",
+                  "disabled": true
+                },
+                {
+                  "key": "",
+                  "value": null,
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetMostViewedArticle",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "pm.test(\"Response time is less than 500ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.nytimes.com/svc/mostpopular/v2/viewed/{{period}}.json",
+              "protocol": "https",
+              "host": [
+                "api",
+                "nytimes",
+                "com"
+              ],
+              "path": [
+                "svc",
+                "mostpopular",
+                "v2",
+                "viewed",
+                "{{period}}.json"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {
+          "name": "Search",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "pm.test(\"Response time is less than 2500ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.nytimes.com/svc/semantic/v2/concept/search.json\n?query={{valueForSearch}}&offset=10&fields=all",
+              "protocol": "https",
+              "host": [
+                "api",
+                "nytimes",
+                "com"
+              ],
+              "path": [
+                "svc",
+                "semantic",
+                "v2",
+                "concept",
+                "search.json\n"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "{{valueForSearch}}",
+                  "description": "Precedes the search term string. Used in a Search Query. Except for <specific_concept_name>, Search Query will take the required parameters listed above (<concept_type>, <concept_uri>, <article_uri>) as an optional_parameter in addition to the query=<query_term>."
+                },
+                {
+                  "key": "offset",
+                  "value": "10",
+                  "description": "Integer value for the index count from the first concept to the last concept, sorted alphabetically. Used in a Search Query. A Search Query will return up to 10 concepts in its results."
+                },
+                {
+                  "key": "fields",
+                  "value": "all",
+                  "description": "The following values are allowed:\nall, pages, ticker_symbol, links, taxonomy, combinations, geocodes, article_list, scope_notes, search_api_query\n\n\"all\" or comma-separated list of specific optional fields: pages, ticker_symbol, links, taxonomy, combinations, geocodes, article_list, scope_notes, search_api_query\n\nOptional fields are returned in result_set. They are briefly explained here:\n\npages: A list of topic pages associated with a specific concept. ticker_symbol: If this concept is a publicly traded company, this field contains the ticker symbol. links: A list of links from this concept to external data resources. taxonomy: For descriptor concepts, this field returns a list of taxonomic relations to other concepts. combinations: For descriptor concepts, this field returns a list of the specific meanings tis concept takes on when combined with other concepts. geocodes: For geographic concepts, the full GIS record from geonames. article_list: A list of up to 10 articles associated with this concept. scope_notes: Scope notes contains clarifications and meaning definitions that explicate the relationship between the concept and an article. search_api_query: Returns the request one would need to submit to the Article Search API to obtain a list of articles annotated with this concept."
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ArticleSearch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "pm.test(\"Response time is less than 500ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.nytimes.com/svc/search/v2/articlesearch.json?facet=true&facet_fields=source&facet_filter=true&page=1&sort=newest&q=<string>",
+              "protocol": "https",
+              "host": [
+                "api",
+                "nytimes",
+                "com"
+              ],
+              "path": [
+                "svc",
+                "search",
+                "v2",
+                "articlesearch.json"
+              ],
+              "query": [
+                {
+                  "key": "begin_date",
+                  "value": "<string>",
+                  "description": "matches ^\\d{8}$",
+                  "disabled": true
+                },
+                {
+                  "key": "end_date",
+                  "value": "<string>",
+                  "description": "matches ^\\d{8}$",
+                  "disabled": true
+                },
+                {
+                  "key": "facet",
+                  "value": "true",
+                  "description": "The following values are allowed:\nfalse, true"
+                },
+                {
+                  "key": "facet_fields",
+                  "value": "source",
+                  "description": "The following values are allowed:\nday_of_week, document_type, ingredients, news_desk, pub_month, pub_year, section_name, source, subsection_name, type_of_material"
+                },
+                {
+                  "key": "facet_filter",
+                  "value": "true",
+                  "description": "The following values are allowed:\nfalse, true"
+                },
+                {
+                  "key": "fl",
+                  "value": "<string>",
+                  "description": "Field list",
+                  "disabled": true
+                },
+                {
+                  "key": "fq",
+                  "value": "<string>",
+                  "description": "Filter query",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (0, 1, ...)"
+                },
+                {
+                  "key": "sort",
+                  "value": "newest",
+                  "description": "The following values are allowed:\nnewest, oldest, relevance"
+                },
+                {
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Query"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "TopStories",
+      "item": [
+        {
+          "name": "GetTopStories",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "pm.test(\"Response time is less than 500ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.nytimes.com/svc/topstories/v2/{section}.json?section=books",
+              "protocol": "https",
+              "host": [
+                "api",
+                "nytimes",
+                "com"
+              ],
+              "path": [
+                "svc",
+                "topstories",
+                "v2",
+                "{section}.json"
+              ],
+              "query": [
+                {
+                  "key": "section",
+                  "value": "books",
+                  "description": "The following values are allowed:\narts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api-key",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "rz5zWihitVCP57mCjVTa02Yu7V5ZnBU9",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "period",
+      "value": "7",
+      "type": "string"
+    },
+    {
+      "key": "valueForSearch",
+      "value": "world",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+
+
+
+
+
+api-key =rz5zWihitVCP57mCjVTa02Yu7V5ZnBU9
+base_url = https://api.nytimes.com/svc/
+period=7
+valueForSearch = world
+

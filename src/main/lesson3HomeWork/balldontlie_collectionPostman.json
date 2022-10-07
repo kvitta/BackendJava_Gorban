@@ -1,0 +1,342 @@
+{
+  "info": {
+    "_postman_id": "e5c6c3cb-9dfa-4256-ae93-3374fffb57dc",
+    "name": "Balldontlie API_Gorban_HomeWork_Lesson_2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "20304265"
+  },
+  "item": [
+    {
+      "name": "Players",
+      "item": [
+        {
+          "name": "Get All Players",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "pm.test(\"Response time is less than 500ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://www.balldontlie.io/api/v1/players?page=1&per_page=10&search=davis",
+              "protocol": "https",
+              "host": [
+                "www",
+                "balldontlie",
+                "io"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "players"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number, used for pagination."
+                },
+                {
+                  "key": "per_page",
+                  "value": "10",
+                  "description": "The number of results returned per call, used for pagination. Max 100."
+                },
+                {
+                  "key": "search",
+                  "value": "davis",
+                  "description": "Used to filter players based on their name. For example, ?search=davis will return players that have 'davis' in their first or last name.\n"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a Specific Player",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Body matches string\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"237\");",
+                  "});",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "pm.test(\"Response time is less than 500ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://www.balldontlie.io/api/v1/players/{{playerID}}",
+              "protocol": "https",
+              "host": [
+                "www",
+                "balldontlie",
+                "io"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "players",
+                "{{playerID}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Teams",
+      "item": [
+        {
+          "name": "Get All Teams",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "pm.test(\"Response time is less than 500ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://www.balldontlie.io/api/v1/teams?page=2&per_page=10",
+              "protocol": "https",
+              "host": [
+                "www",
+                "balldontlie",
+                "io"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "teams"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "2",
+                  "description": "The page number, used for pagination."
+                },
+                {
+                  "key": "per_page",
+                  "value": "10",
+                  "description": "The number of results returned per call, used for pagination.\n"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a Specific Team",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Body matches string\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"14\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://www.balldontlie.io/api/v1/teams/{{teamID}}",
+              "protocol": "https",
+              "host": [
+                "www",
+                "balldontlie",
+                "io"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "teams",
+                "{{teamID}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Games",
+      "item": [
+        {
+          "name": "Get All Games",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "pm.test(\"Response time is less than 500ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://www.balldontlie.io/api/v1/games?seasons=2022",
+              "protocol": "https",
+              "host": [
+                "www",
+                "balldontlie",
+                "io"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "games"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0",
+                  "description": "The page number, used for pagination.",
+                  "disabled": true
+                },
+                {
+                  "key": "per_page",
+                  "value": null,
+                  "description": "The number of results returned per call, used for pagination. Max 100.",
+                  "disabled": true
+                },
+                {
+                  "key": "dates",
+                  "value": null,
+                  "description": "An array of dates formatted in 'YYYY-MM-DD'\n",
+                  "disabled": true
+                },
+                {
+                  "key": "seasons",
+                  "value": "2022",
+                  "description": "An array of seasons"
+                },
+                {
+                  "key": "team_ids",
+                  "value": null,
+                  "description": "An array of team_ids\n",
+                  "disabled": true
+                },
+                {
+                  "key": "postseason",
+                  "value": null,
+                  "description": "Boolean",
+                  "disabled": true
+                },
+                {
+                  "key": "start_date",
+                  "value": null,
+                  "description": "A single date in 'YYYY-MM-DD' format. This is used to select games that occur on or after this date.\n",
+                  "disabled": true
+                },
+                {
+                  "key": "end_date",
+                  "value": null,
+                  "description": "A single date in 'YYYY-MM-DD' format. This is used to select games that occur on or before this date.\n",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "playerID",
+      "value": "237",
+      "type": "string"
+    },
+    {
+      "key": "teamID",
+      "value": "14",
+      "type": "string"
+    }
+  ]
+}
