@@ -1,6 +1,11 @@
 
 apiKey =8abf46efb31b4ba8826949e55d74b449
 base_url =https://api.spoonacular.com/
+username = Kvitta
+firstname = a
+lastname = a
+email = aagorban.sar@mail.ru
+password = kzwbwbSPOON
 cuisine =American
 sort = calories
 query = pasta

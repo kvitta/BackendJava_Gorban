@@ -23,11 +23,16 @@ public abstract class AbstractTest {
     private static String diet;
     private  static String excludeIngredients;
     private static String titleMatch;
+    private static String email;
+    private static String firstname;
+    private static String lastname;
+    private static String username;
+    private static String password;
 
     @BeforeAll// перед всеми тестами
     static void initTest() throws IOException {
         // получаем объект типа InputStream из файла propertiesForHW3 (путь к файлу)
-        configFile = new FileInputStream("src/main/resources/HomeWork_3/properties_spoonacular");
+        configFile = new FileInputStream("src/main/resources/HomeWork_3/propertiesForHW3");
         // загружаем значения файла в объект типа Properties
         prop.load(configFile);
     //определяем статические переменные - считываем в них соответствующие значения
@@ -41,6 +46,11 @@ public abstract class AbstractTest {
         diet = prop.getProperty("diet");
         excludeIngredients= prop.getProperty("excludeIngredients");
         titleMatch = prop.getProperty("titleMatch");
+        username = prop.getProperty("username");
+        email = prop.getProperty("email");
+        firstname = prop.getProperty("firstname");
+        lastname = prop.getProperty("lastname");
+        password = prop.getProperty("password");
     }
     @BeforeAll
     static void setUp() {
@@ -66,4 +76,24 @@ public abstract class AbstractTest {
     public static String getExcludeIngredients() {return excludeIngredients;}
 
     public static String getTitleMatch() {return titleMatch;}
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static String getFirstname() {
+        return firstname;
+    }
+
+    public static String getLastname() {
+        return lastname;
+    }
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static String getPassword() {
+        return password;
+    }
 }
