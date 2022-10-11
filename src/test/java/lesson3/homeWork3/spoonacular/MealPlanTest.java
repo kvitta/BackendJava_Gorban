@@ -18,31 +18,31 @@ public class MealPlanTest extends AbstractTest {
     void mealPlan(){
 
         //connect user
-        String hash = given()
-           // given()//connect user
-                //.queryParam("hash", "a3da66460bfb7e62ea1c96cfa0b7a634a346ccbf")
-                .queryParam("apiKey", getApiKey())
-                .body("{\n"
-                        + " \"username\":" + getUsername()+",\n"
-                        + " \"firstname\":"+ getFirstname() +",\n"
-                        + " \"lastname\": "+ getLastname() +",\n"
-                        + " \"email\":"+ getEmail() +",\n"
-                        + "}")
-                .when()
-                .post("https://api.spoonacular.com/users/connect")// делаем postзапрос
-                .then()
-                .statusCode(200)
-                .extract()
-                .jsonPath()// он возвращает объект json
-                .get("hash")//берем hash
-               .toString();//сохраняем его в переменную
+//        String hash = given()
+//           // given()//connect user
+//                //.queryParam("hash", "a3da66460bfb7e62ea1c96cfa0b7a634a346ccbf")
+//                .queryParam("apiKey", getApiKey())
+//                .body("{\n"
+//                        + " \"username\":" + getUsername()+",\n"
+//                        + " \"firstname\":"+ getFirstname() +",\n"
+//                        + " \"lastname\": "+ getLastname() +",\n"
+//                        + " \"email\":"+ getEmail() +",\n"
+//                        + "}")
+//                .when()
+//                .post("https://api.spoonacular.com/users/connect")// делаем postзапрос
+//                .then()
+//                .statusCode(200)
+//                .extract()
+//                .jsonPath()// он возвращает объект json
+//                .get("hash")//берем hash
+//               .toString();//сохраняем его в переменную
 
 
 
         //Get Meal Plan Templates
 
         given()
-                .queryParam("hash", hash)
+                .queryParam("hash", getHash())
                 .queryParam("apiKey", getApiKey())
                 .queryParams("username",getUsername())
                 .pathParams("username",getUsername())
@@ -58,7 +58,7 @@ public class MealPlanTest extends AbstractTest {
 
        //add meal
     String id = given()
-            .queryParam("hash", hash)
+            .queryParam("hash", getHash())
             .queryParam("apiKey", getApiKey())
             .body("{\n"
                     + " \"date\": 1644881179,\n"
@@ -74,7 +74,7 @@ public class MealPlanTest extends AbstractTest {
                     + " }\n"
                     + "}")
             .when()
-            .post("https://api.spoonacular.com/mealplanner/Kvitta/items")// делаем postзапрос
+            .post("https://api.spoonacular.com/mealplanner/kvitta24/items")// делаем postзапрос
             .then()
             .statusCode(200)
             .extract()
@@ -84,9 +84,9 @@ public class MealPlanTest extends AbstractTest {
 
         //delete meal
     given()
-                .queryParam("hash", hash)
+                .queryParam("hash", getHash())
                 .queryParam("apiKey", getApiKey())
-            .delete("https://api.spoonacular.com/mealplanner/Kvitta/items/" + id)
+            .delete("https://api.spoonacular.com/mealplanner/kvitta24/items/" + id)
                 .then()
                 .statusCode(200);
 }}

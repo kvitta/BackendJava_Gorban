@@ -28,6 +28,7 @@ public abstract class AbstractTest {
     private static String lastname;
     private static String username;
     private static String password;
+    private static String hash;
 
     @BeforeAll// перед всеми тестами
     static void initTest() throws IOException {
@@ -51,6 +52,7 @@ public abstract class AbstractTest {
         firstname = prop.getProperty("firstname");
         lastname = prop.getProperty("lastname");
         password = prop.getProperty("password");
+        hash = prop.getProperty("hash");
     }
     @BeforeAll
     static void setUp() {
@@ -96,4 +98,6 @@ public abstract class AbstractTest {
     public static String getPassword() {
         return password;
     }
+
+    public static String getHash() {return hash;}
 }

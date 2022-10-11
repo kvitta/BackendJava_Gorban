@@ -1,11 +1,12 @@
 
 apiKey =8abf46efb31b4ba8826949e55d74b449
 base_url =https://api.spoonacular.com/
-username = Kvitta
+username = kvitta24
 firstname = a
 lastname = a
-email = aagorban.sar@mail.ru
-password = kzwbwbSPOON
+email = aagorban.sar@gmail.com
+password = cauliflowermashon14seasoning
+hash = 1646fa68c868e0976a52cf6e841df2c58c98e12e
 cuisine =American
 sort = calories
 query = pasta
