@@ -16,9 +16,10 @@ import retrofit2.Response;
 import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 
-public class CreateProductTest {
+public class HomeWorkCreateProductTest {
 
     static ProductService productService;
     Product product = null;
@@ -46,6 +47,30 @@ public class CreateProductTest {
         id =  response.body().getId();
         assertThat(response.isSuccessful(), CoreMatchers.is(true));
     }
+
+    @Test
+    void getProductsTest() throws IOException {
+        Response<ResponseBody> response = productService.getProducts()
+                .execute();
+        assertThat(response.isSuccessful(), CoreMatchers.is(true));
+    }
+
+    @Test
+    void getProductByIdTest() throws IOException {
+        Response<Product> response = productService.getProductById(id)
+                .execute();
+        id =  response.body().getId();
+        assertThat(response.isSuccessful(), CoreMatchers.is(true));
+    }
+
+    @Test
+    void modifyProductTest() throws IOException {
+        Response<Product> response = productService.modifyProduct(product)
+                .execute();
+        assertThat(response.isSuccessful(), CoreMatchers.is(true));
+
+    }
+
 
 
 
