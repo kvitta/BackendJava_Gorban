@@ -16,7 +16,6 @@ import retrofit2.Response;
 import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 
 
 public class HomeWorkCreateProductTest {
